@@ -35,36 +35,48 @@ public class TaskFragment extends Fragment {
         taskFragment.setArguments(bundle);
         return taskFragment;
     }
-    @Nullable
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task, container, false);
 
-        EditText nameField = view.findViewById(R.id.task_name);
-        nameField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        if(container != null){
+            EditText nameField = view.findViewById(R.id.task_name);
 
+            if(nameField != null){
+                nameField.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        task.setName(s.toString());
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+
+                    }
+                });
             }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+            Button dateButton = view.findViewById(R.id.task_date);
+            if(dateButton != null){
+                dateButton.setText(task.getDate().toString());
+                dateButton.setEnabled(false);
             }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            CheckBox doneCheckBox = view.findViewById(R.id.task_done);
+            if(doneCheckBox != null){
+                doneCheckBox.setChecked(task.isDone());
+                doneCheckBox.setOnCheckedChangeListener((buttonView, isChecked) ->{
+                    task.setDone(isChecked);
+                });
             }
-        });
-
-        Button dateButton = view.findViewById(R.id.task_date);
-        dateButton.setText(task.getDate().toString());
-        dateButton.setEnabled(false);
-
-        CheckBox doneCheckBox = view.findViewById(R.id.task_done);
-        doneCheckBox.setChecked(task.isDone());
-        doneCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> task.setDone(isChecked));
+        }
 
         return view;
     }
