@@ -1,9 +1,11 @@
 package pl.edu.pb.todoapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,9 +44,30 @@ public class TaskListFragment extends Fragment {
         return view;
     }
 
-    private class TaskHolder extends RecyclerView.ViewHolder {
+    private class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView nameTextView;
+        private TextView dateTextView;
+        private Task task;
+
         public TaskHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_task, parent, false));
+            itemView.setOnClickListener(this);
+
+            nameTextView = itemView.findViewById(R.id.task_item_name);
+            dateTextView = itemView.findViewById(R.id.task_item_date);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra(KEY_EXTRA_TASK_ID, task.getId());
+            startActivity(intent);
+        }
+
+        public void bind(Task task) {
+            this.task = task;
+            nameTextView.setText(task.getName());
+            dateTextView.setText(task.getDate().toString());
         }
     }
 
@@ -64,7 +87,8 @@ public class TaskListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
-
+            Task task = tasks.get(position);
+            holder.bind(task);
         }
 
         @Override
