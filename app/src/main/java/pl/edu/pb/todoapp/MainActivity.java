@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment;
 import java.util.UUID;
 
 public class MainActivity extends SingleFragmentActivity {
-    //init
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

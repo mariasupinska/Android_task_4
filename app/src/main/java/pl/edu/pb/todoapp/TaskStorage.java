@@ -13,6 +13,11 @@ public class TaskStorage {
         for ( int i = 1; i <= 123; i++ ) {
             Task task = new Task();
             task.setName("Pilne zadanie numer " + i);
+            if ( i % 3 == 0 ) {
+                task.setCategory(Category.UNIVERSITY);
+            } else {
+                task.setCategory(Category.HOME);
+            }
             task.setDone(i % 3 == 0);
             tasks.add(task);
         }
