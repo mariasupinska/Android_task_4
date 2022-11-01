@@ -1,6 +1,7 @@
 package pl.edu.pb.todoapp;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,6 +90,10 @@ public class TaskListFragment extends Fragment {
         public CheckBox getCheckBox() {
             return checkBox;
         }
+
+        public TextView getNameTextView() {
+            return nameTextView;
+        }
     }
 
     private class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
@@ -110,10 +115,19 @@ public class TaskListFragment extends Fragment {
             Task task = tasks.get(position);
             holder.bind(task);
 
+            TextView nameTextView = holder.getNameTextView();
+
             CheckBox checkBox = holder.getCheckBox();
             checkBox.setChecked(tasks.get(position).isDone());
             checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
                tasks.get(holder.getAdapterPosition()).setDone(isChecked);
+                if ( checkBox.isChecked() ) {
+                    if ( !nameTextView.getPaint().isStrikeThruText() ) {
+                        nameTextView.setPaintFlags(nameTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
+                } else {
+                    nameTextView.setPaintFlags(nameTextView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                }
             });
         }
 
