@@ -21,7 +21,9 @@
             style="@style/TextFieldsStyle"
             android:id="@+id/task_item_name"
             android:layout_width="275dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1" />
 
         <TextView
             style="@style/DateFieldsStyle"
