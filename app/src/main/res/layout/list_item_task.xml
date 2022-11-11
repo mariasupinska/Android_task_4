@@ -32,6 +32,7 @@
         android:id="@+id/task_item_icon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="@dimen/task_item_padding"
         android:layout_gravity="right"
         android:cropToPadding="true"
         app:srcCompat="@drawable/ic_house"
