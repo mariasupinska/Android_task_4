@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        style="?android:listSeparatorTextViewStyle"
+        style="@style/TextFieldsStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/text_view_padding"
@@ -17,19 +17,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/edit_text_padding"
-        android:hint="@string/name_hint" />
+        android:hint="@string/name_hint"
+        android:textColor="@color/menuTextColor"/>
 
     <TextView
-        style="?android:listSeparatorTextViewStyle"
+        style="@style/TextFieldsStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/text_view_padding"
-        android:text="@string/details_label" />
+        android:text="@string/details_label"
+        android:textColor="@color/menuTextColor"/>
 
     <Spinner
         android:id="@+id/task_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/menuTextColor"/>
 
     <EditText
         android:id="@+id/task_date"
@@ -41,12 +44,14 @@
         android:cursorVisible="false"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:inputType="date" />
+        android:inputType="date"
+        android:textColor="@color/menuTextColor"/>
 
     <CheckBox
         android:id="@+id/task_done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/done_label" />
+        android:text="@string/done_label"
+        android:textColor="@color/menuTextColor"/>
 
 </LinearLayout>

@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="menuBarColor">#ffca28</color>
+    <color name="statusBarColor">#fffd61</color>
+    <color name="menuTextColor">#000000</color>
+    <color name="dateTextColor">#212121</color>
+    <color name="appBackgroundColor">#F8F8F8</color>
+    <color name="colorLightOrange">#e65100</color>
 </resources>

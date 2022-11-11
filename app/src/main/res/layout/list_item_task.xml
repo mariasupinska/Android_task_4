@@ -18,11 +18,13 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/TextFieldsStyle"
             android:id="@+id/task_item_name"
             android:layout_width="275dp"
             android:layout_height="wrap_content" />
 
         <TextView
+            style="@style/DateFieldsStyle"
             android:id="@+id/task_item_date"
             android:layout_width="275dp"
             android:layout_height="wrap_content" />
